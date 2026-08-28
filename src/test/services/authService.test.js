@@ -3,7 +3,8 @@ import AuthService from '../../services/authService.js';
 import bcryptjs from 'bcryptjs';
 import Usuario from '../../models/usuario.js';
 
-// Teste unitário - Cadastrar Usuário
+// Teste unitário - testando uma pequena parte do codigo, o método cadastrar Usuário 
+// Teste de caixa branca - precisa ter acesso diretamente as informações do codigo
 
 const authService = new AuthService();
 
