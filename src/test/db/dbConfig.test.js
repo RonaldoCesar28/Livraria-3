@@ -1,6 +1,8 @@
 import db from '../../db/dbconfig';
 import { describe, expect } from '@jest/globals';
 
+//  implementação de testes de conexão com banco de dados
+//  validando a conexão da API com o banco de dados
 describe('Testando configDB', () => {
     it('Teste de conexão com o banco de dados', async () => {
         const autorMock = {
@@ -14,7 +16,7 @@ describe('Testando configDB', () => {
         const autorSalvo = await db('autores').insert(autorMock).then((retorno) => db('autores')
             .where('id', retorno[0])).then((autorSelecionado) => autorSelecionado[0]);
 
-        // valida se o nome salvo é igual ao do autorMock
+        // busca o registro e valida se o nome salvo é igual ao do autorMock
         expect(autorSalvo.nome).toBe(autorMock.nome);
 
         // deleta o registro que acabou de ser criado para deixar o banco de dados limpo.
