@@ -1,8 +1,8 @@
 {
-  "name": "nodejs-livraria",
+  "name": "livraria-3",
   "version": "1.0.0",
   "description": "Api de livraria com nodejs",
-  "author": "Raphael Lucas Girao de Lima",
+  "author": "Ronaldo Cesar Alves Nogueira",
   "main": "index.js",
   "engines": {
     "node": "20.20.0"
@@ -16,7 +16,8 @@
     "test:auth:router": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/routes/authRoutes.test.js --detectOpenHandles",
     "test:db": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/db/dbconfig.test.js --detectOpenHandles",
     "test:image:service": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/services/livrosImagensService.test.js --detectOpenHandles",
-    "test:email": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/config/disparoEmail.test.js --detectOpenHandles"
+    "test:email": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/config/disparoEmail.test.js --detectOpenHandles",
+    "test:aluguel:service": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/services/aluguelLivroService.test.js --detectOpenHandles"
   },
   "keywords": [],
   "license": "ISC",

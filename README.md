@@ -1,37 +1,34 @@
-# API Livraria
+# Livraria-3
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN)
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=%20CONCLUIDO&color=GREEN)
 
 ## Resumo do projeto
 
-Projeto de API REST para prática de JavaScript.
-Livraria com sistema de cadastro e manejo de livros, autores,editoras e usuários.
+Projeto de Testes API REST para uma Livraria com sistema de cadastro e manejo de livros, autores, editoras, aluguel-livro, livros-imagens e usuários.
 
 
-## Stack utilizada
+## 🚀 Tecnologias
 
-* `Node.js` v16.14.2
-* `express` v4.18.1,
-* `knex` v2.1.0
-* `sqlite3` v5.0.8
+* `Node.js` v20.20.0
+* `express` v5.2.1
+* `knex` v3.3.0
+* `multer` v2.2.0
+* `nodemailer` v9.0.5
+* `sqlite` v5.1.1
+* `sqlite3` v6.0.1
+* `eslint` v10.9.1
+* `jest` v30.4.2
+* `nodemon` v3.1.14
+* `supertest` v7.2.2
 
 
-## Instalação
+## 📂 Estrutura de Pastas e Arquivos do Projeto
 
 Este projeto já conta com o código necessário para subir a API em um servidor local:
 
 ```
-├── .env
-├── .eslintrc.cjs
-├── .gitignore
-├── .nvmrc
-├── package.json
-├── package-lock.json
-├── populate.sql
-├── README.md
-├── server.js
+├── node_modules
 ├── src
-│   ├── app.js
 │   ├── config
 │   │   └── constants.js
 │   │   └── nodeMailer.js
@@ -73,16 +70,35 @@ Este projeto já conta com o código necessário para subir a API em um servidor
 │   │   └── livrosService.js
 │   │   └── usuariosService.js
 │   ├── test
-│   │   │   ├── models
-│   │   │   │   └── editora.test.js
-│   │   │   ├── routes
-│   │   │   │   └── editorasRoutes.test.js
+│   │   ├── config
+│   │   │   └── disparoEmail.test.js
+│   │   │   └── testes-disparoEmail.txt
+│   │   ├── db
+│   │   │   └── dbConfig.test.js
+│   │   │   └── testes-db.txt
+│   │   ├── models
+│   │   │   └── editora.test.js
+│   │   ├── routes
+│   │   │   └── authRoutes.test.js
+│   │   │   └── editorasRoutes.test.js
+│   │   │   └── testes-authRoutes.txt
+│   │   ├── services
+│   │   │   └── aluguelLivroService.test.js
+│   │   │   └── authService.test.js
+│   │   │   └── livrosImagensService.test.js
+│   │   │   └── testes-aluguelLivro.txt
+│   │   │   └── testes-authService.txt
+│   │   │   └── testes-imagem.txt
+│   ├── app.js
+├── .env
+├── .gitignore
+├── eslint.config.js
+├── package-lock.json
+├── package.json
+├── populate.sql
+├── README.md
+├── server.js
 ```
-
-
-### Instalação do projeto
-* Baixe o repositório do projeto, navegue via terminal até a pasta e instale as dependências necessárias com `npm install`.
-* Confira se a pasta `node_modules` foi criada na raiz do projeto.
 
 
 ### Instalação dos drivers do SQLite (Linux Debian/Ubuntu)
@@ -101,22 +117,11 @@ O projeto já conta com uma base de dados configurada e populada com alguns dado
 * Utilize o cli do SQLite para acessar o arquivo `src/db/livraria.sqlite` e fazer consultas via terminal:
   `sqlite3 ./src/db/livraria.sqlite`. O terminal deverá exibir a seguinte mensagem (a data e hora do acesso serão as locais do momento em que você acessar):
   ```
-  SQLite version 3.31.1 2020-01-27 19:55:54
+  SQLite version 3.53.4 2026-07-24 19:55:54
   Enter ".help" for usage hints.
   sqlite>
   ```
   
-  ### Instalação dos drivers do SQLite (Linux Debian/Ubuntu)
-
-Este projeto utiliza o SQLite como gerenciador de banco de dados SQL. O SQLite utiliza um arquivo, normalmente de extensão `.sqlite` ou `.db`, para guardar os dados.
-
-O projeto já conta com uma base de dados configurada e populada com alguns dados iniciais, localizado na pasta `src/db/livraria.sqlite`. Para utilizar estes dados é necessário ter os drivers do SQLite instalados localmente no computador; você pode seguir os passos abaixo para instalar e acessar os dados: 
-
-* Instalar o `sqlite` globalmente no computador:
-  `sudo apt update`
-  `sudo apt install sqlite3`
-  
-
 ### Instalação dos drivers do SQLite (Windows)
 * Faça o download dos drivers SQLite na página: https://www.sqlite.org/download.html
 
@@ -130,7 +135,7 @@ O projeto já conta com uma base de dados configurada e populada com alguns dado
 	 * Abra "Exibir configurações avançadas do Sistema" (Advanced System Properties). Painel de controle (Control Panel) > Sistema (System) > Configurações avançadas do Sistema (Advanced System Settings).
 	* Selecione "Variáveis de Ambiente"
 	* Em variáveis de sistema, selecione a variável PATH e clique em **Editar..** 
-	* **Adicione C:\sqlite3 ao final** e selecione a opção ok
+	* **Clique em Novo e adicione C:\sqlite3** e selecione a opção ok
 
 [![Add sqlite3 to Windows PATH Variable ](https://storage.googleapis.com/static.configserverfirewall.com/images/windows10/sqlite3/sqlite3path.png)](https://storage.googleapis.com/static.configserverfirewall.com/images/windows10/sqlite3/sqlite3path.png)
 
@@ -145,7 +150,7 @@ Depois execute o cmd como administrador e rode o comando ```sqlite3```
 * Utilize o cli do SQLite para acessar o arquivo `src/db/livraria.sqlite` e fazer consultas via terminal:
   `sqlite3 ./src/db/livraria.sqlite`. O terminal deverá exibir a seguinte mensagem (a data e hora do acesso serão as locais do momento em que você acessar):
   ```
-  SQLite version 3.31.1 2020-01-27 19:55:54
+  SQLite version 3.53.4 2026-07-24 19:55:54
   Enter ".help" for usage hints.
   sqlite>
   ```
@@ -199,7 +204,7 @@ Você pode utilizar o CLI do SQLite para fazer consultas ao banco e conferir se 
   > api-js-local@1.0.0 dev
   > nodemon server.js
 
-  [nodemon] 2.0.16
+  [nodemon] 3.1.14
   [nodemon] to restart at any time, enter `rs`
   [nodemon] watching path(s): *.*
   [nodemon] watching extensions: js,mjs,json
@@ -211,6 +216,44 @@ Você pode utilizar o CLI do SQLite para fazer consultas ao banco e conferir se 
 
   > Esta API está programada para ser acessada a partir de `http://localhost:3000`. Certifique-se de que não existem outros recursos ocupando a porta `3000` antes de subir o projeto.
 
+
+### Configuração do Access Token pelo Site
+
+Para acessar esses endpoints é necessário fazer a validação através do token, que 
+é gerado pela chave secreta que está na pasta e arquivo `config/constants.js`
+
+1 - Entre no site `https://www.jwt.io/`
+
+2 - No meio da página, procure pelo quadrado `Payload: >_Data` e cole exatamente isto dentro dele:
+
+```
+JSON
+{
+  "id": 1,
+  "email": "teste@email.com"
+}
+```
+3 - No canto inferior esquerdo, procure por `Sign JWT >_Secret` Apague o texto que estiver escrito na caixinha de baixo ('a-string-secret-at-least-256-bits-long') e cole a chave do seu arquivo constants.js:
+
+```
+TEXT
+c940b61c49f2a0a1bf3de506ca33a605
+```
+4 - Suba a página. No painel da direita `>_Encoded JWT`, aparecerá um texto gigante dividido por três cores (começando com eyJhbGciOi...). Copie esse texto todo. Esse é o seu Access Token.
+
+### Configuração no Thunder Client ou no Postman
+
+Com o código copiado do site, faça o seguinte para cada uma das rotas (/livros, /editoras, /autores...)
+
+* `Abra a aba da rota (ex: GET http://localhost:3000/livros)`
+
+* `Clique na aba Auth próximo do endereço da URL`
+
+* `Na barra que logo se abrir, clique em Bearer`
+
+* `No campo Token, cole o texto gigante que você copiou do site`
+
+* `Clique em Send`
 
 ### Endpoints
 
@@ -262,3 +305,12 @@ A API expõe os seguintes *endpoints* a partir da *base URL* `localhost:3000`:
 * `GET /usuarios/:id`
 * `PUT /usuarios/:id`
 * `DELETE /usuarios/:id`
+
+## Roadmap
+
+* Autenticação
+* Tratamento de erros
+* Validações
+
+## Desenvolvedor
+<img src="https://github.com/user-attachments/assets/c7a6e9ed-d509-4f2a-b857-c832d6973a54" width="120px"/><br>Ronaldo Cesar
