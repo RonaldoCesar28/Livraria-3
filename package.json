@@ -15,7 +15,8 @@
     "test:auth:service": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/services/authService.test.js --detectOpenHandles",
     "test:auth:router": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/routes/authRoutes.test.js --detectOpenHandles",
     "test:db": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/db/dbconfig.test.js --detectOpenHandles",
-    "test:image:service": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/services/livrosImagensService.test.js --detectOpenHandles"
+    "test:image:service": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/services/livrosImagensService.test.js --detectOpenHandles",
+    "test:email": "node --experimental-vm-modules node_modules/jest/bin/jest.js src/test/config/disparoEmail.test.js --detectOpenHandles"
   },
   "keywords": [],
   "license": "ISC",
