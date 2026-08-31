@@ -1,6 +1,7 @@
 import { describe, expect } from '@jest/globals';
 import LivrosImagensService from '../../services/livrosImagensService';
 
+// testes validação de imagem para verificar se a imagem cadastrada está vinculada a um livro em nossa API;
 const livrosImagensService = new LivrosImagensService();
 
 describe('Testando livrosImagensService.cadastrarImagem', () => {

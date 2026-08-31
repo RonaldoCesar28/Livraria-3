@@ -2,6 +2,7 @@ import { describe, expect } from '@jest/globals';
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
+//  testes de conexão com a biblioteca nodeMailer para disparo de e-mails na API.
 const testAccount = await nodemailer.createTestAccount();
 
 const transporter = nodemailer.createTransport({
@@ -34,5 +35,16 @@ describe('Testando disparo de email', () => {
         const validarConexao = await verificarConexao();
 
         expect(validarConexao).toStrictEqual(estaConectado);
+    });
+
+    it('O sistema deve enviar um email', async () => {
+        const dadosEmailMock = {
+            from: '"Ana Lucia" <ana@gmail.com>',
+            to: 'ronaldo@gmail.com',
+            subject: 'Aluguel de Livro',
+            text: 'Olá, Ronaldo, você alugou o livro Harry Potter e o Cálice de Fogo por 5 dias.',
+        };
+        const info = await transporter.sendMail(dadosEmailMock);
+        expect(info.accepted[0]).toBe(dadosEmailMock.to);
     });
 });
